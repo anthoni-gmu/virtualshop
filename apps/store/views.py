@@ -11,7 +11,7 @@ def product_detail(request,category_slug, slug):
 
 def category_detail(request, slug):
     category=get_object_or_404(Category,slug=slug)
-    products=category.products.all()
+    products=category.products.filter(is_featured=True)
     context={
         'category':category,
         'products':products        
