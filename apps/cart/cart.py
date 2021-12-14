@@ -50,6 +50,15 @@ class Cart(object):
         self.session[settings.CART_SESSION_ID]=self.cart
         self.session.modified =True
     
-    def get_total_cost(self):
-        return sum(float(item['total_price'])for item  in self.cart.values())
+    def clear(self):
+        print("borrar")
         
+        del self.session[settings.CART_SESSION_ID]
+        self.session.modified=True
+    
+    def get_total_cost(self):
+        if "total_price" in self.cart.values():
+            
+            return sum(float(item['total_price'])for item  in self.cart.values())
+        else:
+            return 0

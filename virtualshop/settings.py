@@ -13,6 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-)=(!745#cprc6_m#g*=f6rf_t*^e18g*vbj^9n%a@($aggq!m7'
 
+
+STRIPE_API_KEY_PUBLISHABLE="pk_test_51JujYiCKMB1QFzwpoFJFb5oHQzgBFRb0I77QjdiBL9Z1gGFede4mwJuAuCxSRt05OzGelaqte1FEjfE0aaAbNDZV00V4XEqQE9"
+STRIPE_API_KEY_HIDDEN="sk_test_51JujYiCKMB1QFzwpoFfeIeTPqJeXCEQgTDGX5aOp4gUOFSr4Fxsz5au7wL2N7xX8iDAWMXhhBiqGHW21sBo18IPJ00WVtY8VRs"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -64,6 +67,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'apps.store.context_processors.menu_categories',
+                'apps.cart.context_processors.cart',
+                
                 
             ],
         },
