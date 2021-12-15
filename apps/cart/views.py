@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .cart import Cart
-
+from django.conf import settings
 def cart_detail(request):
     cart=Cart(request)
     productsstring =''
@@ -12,6 +12,10 @@ def cart_detail(request):
         
     context={
         'cart':cart,
-        'productsstring':productsstring
+        'productsstring':productsstring,
+        'pub_key':settings.STRIPE_API_KEY_PUBLISHABLE,
     }
     return render(request, 'cart.html',context)
+
+def success(request):
+    return render(request, 'success.html')

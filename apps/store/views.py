@@ -20,6 +20,7 @@ def category_detail(request, slug):
     context={
         'category':category,
         'products':products,
+    
         
                
     }
