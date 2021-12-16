@@ -41,7 +41,6 @@ class Cart(object):
         self.save()
 
     def remove(self, product_id):
-        print('remove', product_id)
         if product_id in self.cart:
             del self.cart[product_id]
             self.save()
@@ -60,8 +59,4 @@ class Cart(object):
         self.session.modified = True
 
     def get_total_cost(self):
-
-        if self.cart.values():
-            return sum(float(item['total_price'])for item in self.cart.values())
-        else:
-            return 0
+            return sum(float(item['total_price']) for item in self)

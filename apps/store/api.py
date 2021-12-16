@@ -39,12 +39,34 @@ def create_checkout_session(request):
         success_url='http://127.0.0.1:8000/cart/success/',
         cancel_url='http://127.0.0.1:8000/cart/'
     )
+    
+    #Create Orden
+    data = json.loads(request.body)
+    
+    print("data:",data)
+
+    
+    first_name = data['first_name']
+    last_name = data['last_name']
+    email = data['email']
+    address = data['address']
+    zipcode = data['zipcode']
+    place = data['place']
+    
+    payment_intent=session.payment_intent
+    
+    orderid = checkout(request, first_name, last_name, email, address, zipcode, place)
+    
+    order = Order.objects.get(pk=orderid)
+    order.payment_intent=payment_intent
+    order.paid_amount = cart.get_total_cost()
+    
+    order.save()
     return JsonResponse({'session':session})
 
 def api_checkout(request):
     cart = Cart(request)
-
-    print("hola")
+    
     data = json.loads(request.body)
     jsonresponse = {'success': True}
     first_name = data['first_name']
