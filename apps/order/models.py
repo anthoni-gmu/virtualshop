@@ -1,6 +1,5 @@
 from django.db import models
 from apps.store.models import Product
-
 class Order(models.Model):
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
@@ -13,6 +12,8 @@ class Order(models.Model):
     
     paid=models.BooleanField(default=False)
     paid_amount=models.FloatField(default=True,null=True, blank=True)
+    
+    used_coupon=models.CharField(max_length=50,blank=True,null=True)
     
     payment_intent=models.CharField(max_length=255)
     

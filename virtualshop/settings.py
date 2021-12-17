@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.cart',
     'apps.order',
+    'apps.coupon',
     
     
 
