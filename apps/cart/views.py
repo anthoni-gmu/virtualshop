@@ -7,7 +7,7 @@ def cart_detail(request):
     
     for item in cart:
         product=item['product']
-        b="{'id': '%s','title': '%s','price': '%s','quantity': '%s','total_price': '%s'},"%(product.id,product.title,item['price'],item['quantity'],item['total_price'])
+        b="{'id': '%s','title': '%s','price': '%s','quantity': '%s','total_price': '%s','thumbnail': '%s'},"%(product.id,product.title,item['price'],item['quantity'],item['total_price'],product.thumbnail.url)
         productsstring=productsstring+b
         
     context={

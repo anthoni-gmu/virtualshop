@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from apps.core.views import frontpage,contact,about
-from apps.store.views import product_detail,category_detail
+from apps.store.views import product_detail,category_detail,search
 from apps.cart.views import cart_detail,success
 
 from apps.cart.webhook import webhook
@@ -22,6 +22,7 @@ from apps.store.api import (
 urlpatterns = [
     
     path('',frontpage,name='frontpage'),
+    path('search/',search,name='search'),
     path('cart/',cart_detail,name='cart'),
     path('hooks/', webhook, name='webhook'),
     
