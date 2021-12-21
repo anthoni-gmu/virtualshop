@@ -5,14 +5,33 @@
 {% block content %}
     <div id="productapp">
         <h1 class="title">{{ product.title }}</h1>
-        <img src="{{ product.image.url}}">
+        <img :src="mainImage">
+        <div class="columns">
+            <div class="column is-2" v-for="image in images">
+                <figure class="image is-128x128 ">
+                    <img :src="image.thumbnail" @click="changeMainImage(image.image)">
+                </figure>
+            </div>
+        </div>
         <h2 class="subtitle">${{ product.price }}</h2>
 
         {% if product.description %}
             <p>{{ product.description }}</p>
         {% endif %}
 
-        <button @click="addToCart({{ product.id }})">Add to cart</button>
+        {% if product.in_cart %}
+            <p>Already in cart</p>
+        {% else %}
+            {% if product.num_available > 0 %}
+                <button @click="addToCart({{ product.id }})">Add to cart</button>
+            {% else %}
+               <p>Product is out of stock!</p>
+            {% endif %}
+
+
+        {% endif %}
+
+       
         <article class="message is-success" v-if="showMessage">
             
             <div class="message-body">
@@ -30,7 +49,9 @@
         store: store,
         data () {
             return {
-                showMessage:false
+                showMessage:false,
+                mainImage:'{{product.image.url}}',
+                images:[{{imagesstring|safe}}]
             }
         },
         
@@ -38,6 +59,9 @@
             console.log('Mounted');
         },
         methods: {
+            changeMainImage(image){
+                this.mainImage=image;
+            },
             addToCart(product_id) {
                 console.log('Product_id:', product_id);
 

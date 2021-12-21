@@ -45,6 +45,13 @@ class Cart(object):
             del self.cart[product_id]
             self.save()
 
+    
+    def has_product(self, product_id):
+        if str(product_id) in self.cart:
+            return True
+        else:
+            return False
+    
     def get_total_length(self):
         return sum(int(item['quantity']) for item in self.cart.values())
 
