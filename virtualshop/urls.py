@@ -27,6 +27,7 @@ sitemaps = {'static': StaticViewSitemap, 'product': ProductSitemap, 'category': 
 urlpatterns = [
     
     path('',frontpage,name='frontpage'),
+    
     path('search/',search,name='search'),
     path('cart/',cart_detail,name='cart'),
     path('hooks/', webhook, name='webhook'),

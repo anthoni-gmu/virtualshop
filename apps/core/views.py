@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from apps.store.models import Product
+from apps.order.models import Order
+
+
 
 def frontpage(request):
     products =Product.objects.filter(is_featured=True)

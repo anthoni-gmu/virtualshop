@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
 ]
 
+EMAIL_HOST="localhost"
+EMAIL_PORT="1025"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
