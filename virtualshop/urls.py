@@ -4,6 +4,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
+from django.contrib.auth import views
 
 from apps.core.views import frontpage,contact,about
 from apps.store.views import product_detail,category_detail,search
@@ -19,7 +20,7 @@ from apps.store.api import (
     api_checkout,
     create_checkout_session
     )
-
+from apps.userprofile.views import signup,myaccount
 from .sitemaps import StaticViewSitemap,CategorySitemap,ProductSitemap
 sitemaps = {'static': StaticViewSitemap, 'product': ProductSitemap, 'category': CategorySitemap}
 
@@ -37,6 +38,13 @@ urlpatterns = [
     path('contact/',contact,name='contact'),
     path('about/',about,name='about'),
     path('admin/', admin.site.urls),
+    
+    #Auth
+    path('myaccount/',myaccount,name='myaccount'),
+    path('signup/',signup,name='signup'),
+    path('login/',views.LoginView.as_view(template_name='login.html'),name='login'),
+    path('logout/',views.LogoutView.as_view(),name='logout'),
+    
     
     path('sitemap.xml',sitemap,{'sitemaps':sitemaps},name='django.contrib.sitemaps.views.sitemap'),
     

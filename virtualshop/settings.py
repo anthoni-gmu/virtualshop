@@ -21,6 +21,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL='login'
+LOGIN_REDIRECT_URL='cart'
+LOGOUT_REDIRECT_URL='frontpage'
+
+
+
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID='cart'
 
@@ -40,6 +46,7 @@ INSTALLED_APPS = [
     'apps.cart',
     'apps.order',
     'apps.coupon',
+    'apps.userprofile',
     
     
 
