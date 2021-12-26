@@ -23,7 +23,7 @@ from apps.store.api import (
 from apps.userprofile.views import signup,myaccount
 from .sitemaps import StaticViewSitemap,CategorySitemap,ProductSitemap
 sitemaps = {'static': StaticViewSitemap, 'product': ProductSitemap, 'category': CategorySitemap}
-
+from apps.newsletter.api import api_add_subscriber
 
 urlpatterns = [
     
@@ -55,6 +55,7 @@ urlpatterns = [
     path('api/create_checkout_session/',create_checkout_session,name='create_checkout_session'),
     path('api/remove_from_cart/',api_remove_from_cart,name='api_remove_from_cart'),
     path('api/checkout/',api_checkout,name='api_checkout'),
+    path('api/add_subscriber/',api_add_subscriber,name='api_add_subscriber'),
     
     
     #store
