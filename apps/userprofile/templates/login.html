@@ -6,7 +6,25 @@
     <form method="post" action="">
         {% csrf_token %}
 
-        {{form.as_p}}
+        <input type="hidden" name="next" value="{{ next }}">
+        <div class="field">
+            <label>Username</label>
+            <div class="control">
+                <input type="text" name="username" id="id_username" class="input">
+            </div> 
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <div class="control">
+                <input type="password" name="password" id="id_password" class="input">
+            </div> 
+        </div>
+        
+       {% if form.errors %}
+       <div class="notification is-danger">
+        Your username and password didn't match
+    </div> 
+       {% endif %}
         <div class="field">
             <div class="control">
                 <button class="button is-success">Login</button>
