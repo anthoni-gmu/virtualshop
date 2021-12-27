@@ -4,6 +4,28 @@
 
 {% block content %}
     <div id="productapp">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+            <ul>
+                <li>
+                    <a href="{% url 'frontpage' %}">Home</a>  
+                </li>
+                    {% if product.category.parent %}
+                    <li>
+                        <a href="{% url 'category_detail' product.category.parent.slug %}" class="navbar-item">{{product.category.parent.title}}</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a href="{% url 'category_detail' product.category.slug %}" class="navbar-item">{{product.category.title}}</a>
+    
+                    </li>
+                    <li class="is-active">
+                        <a href="{% url 'product_detail' product.category.slug product.slug %}" class="navbar-item">{{product.title}}</a>
+    
+                    </li>
+    
+                   
+            </ul>
+        </nav>  
         <h1 class="title">{{ product.title }}</h1>
         <img :src="mainImage">
         {% if product.images.all %}
@@ -84,6 +106,8 @@
                 </div>
             </div>
 
+        {% else %}
+        <button @click="addToCart({{ product.id }})" class="button is-success">Add to cart</button>
         {% endif %}
 
         <article class="message is-success" v-if="showMessage">
