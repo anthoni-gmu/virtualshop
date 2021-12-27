@@ -15,8 +15,12 @@ def cart_detail(request):
         first_name=request.user.first_name
         last_name=request.user.last_name
         email=request.user.email
+        address=request.user.userprofile.address
+        zipcode=request.user.userprofile.zipcode
+        place=request.user.userprofile.place
+        phone=request.user.userprofile.phone
     else:
-        first_name=last_name=email=''
+        first_name=last_name=email=address= zipcode= place= phone=''
     
     context={
         'cart':cart,
@@ -25,6 +29,10 @@ def cart_detail(request):
         'first_name':first_name,
         'last_name':last_name,
         'email':email,
+        'address':address,
+        'zipcode':zipcode,
+        'place':place,
+        'phone':phone
     }
     return render(request, 'cart.html',context)
 
