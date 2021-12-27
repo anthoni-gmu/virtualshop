@@ -14,3 +14,6 @@ form ul{
 .newsletter-wrapper .has-addons{
     justify-content: center;
 }
+.notification.space-bellow{
+    margin-bottom: 20px;
+}

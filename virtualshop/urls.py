@@ -13,7 +13,7 @@ from apps.cart.views import cart_detail,success
 from apps.cart.webhook import webhook
 
 from apps.coupon.api import api_can_use
-
+from apps.order.views import admin_order_pdf
 from apps.store.api import (
     api_add_to_cart,
     api_remove_from_cart,
@@ -38,6 +38,8 @@ urlpatterns = [
     path('contact/',contact,name='contact'),
     path('about/',about,name='about'),
     path('admin/', admin.site.urls),
+     path('admin_order_pdf/<int:order_id>/', admin_order_pdf, name='admin_order_pdf'),
+    
     
     #Auth
     path('myaccount/',myaccount,name='myaccount'),
